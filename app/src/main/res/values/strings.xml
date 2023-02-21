@@ -6,4 +6,8 @@
     <string name="password">Password</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="fill_please">Please fill before proceeding</string>
+    <string name="grid_image">Grid Image</string>
+    <string name="recommendations">Recommendations</string>
+    <string name="view_all">View All</string>
+    <string name="see_details">See Details</string>
 </resources>

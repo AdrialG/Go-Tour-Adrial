@@ -33,6 +33,11 @@
             android:name=".ui.home.HomeActivity"
             android:exported="false">
         </activity>
+
+        <activity
+            android:name=".ui.list.ListActivity"
+            android:exported="false">
+        </activity>
     </application>
 
 </manifest>
