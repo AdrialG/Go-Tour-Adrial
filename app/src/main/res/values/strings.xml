@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Travel App</string>
+    <string name="go_tour">Go Tour</string>
+    <string name="login">Login</string>
+    <string name="telephone_number">Telephone Number</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="fill_please">Please fill before proceeding</string>
+</resources>
