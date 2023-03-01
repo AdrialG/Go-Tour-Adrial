@@ -5,6 +5,10 @@
 
     <data>
 
+        <variable
+            name="data"
+            type="com.example.travelapp.data.Tour" />
+
     </data>
 
     <androidx.constraintlayout.motion.widget.MotionLayout

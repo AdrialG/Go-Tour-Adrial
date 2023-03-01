@@ -5,6 +5,10 @@
 
     <data>
 
+        <variable
+            name="data"
+            type="com.example.travelapp.data.Tour" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,8 +19,11 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:cardCornerRadius="30dp">
+            android:layout_height="320dp"
+            app:cardCornerRadius="30dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -36,7 +43,7 @@
                         android:id="@+id/list_image"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/image_placeholder"
+                        imageUrl='@{data.image}'
                         android:scaleType="centerCrop" />
 
                 </androidx.cardview.widget.CardView>
@@ -46,6 +53,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:text="Destination"
+                    android:text='@{data.name}'
                     android:textSize="20sp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/sora_bold"
@@ -68,7 +76,8 @@
                     android:id="@+id/destination_address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="Destination Adress Here"
+                    tools:text="Destination Address Here"
+                    android:text='@{data.address}'
                     android:textSize="16sp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/sora_regular"
@@ -78,9 +87,10 @@
                     app:layout_constraintStart_toEndOf="@id/map_cursor" />
 
                 <Button
+                    android:id="@+id/button_list_detail"
                     android:layout_width="140dp"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/button_list"
+                    android:backgroundTint="@color/logo_blue"
                     android:layout_margin="10dp"
                     android:text="@string/see_details"
                     android:textColor="@color/white"

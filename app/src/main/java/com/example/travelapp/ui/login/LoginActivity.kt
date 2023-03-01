@@ -6,10 +6,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.crocodic.core.api.ApiStatus
 import com.crocodic.core.data.CoreSession
-import com.crocodic.core.extension.base64encrypt
-import com.crocodic.core.extension.isEmptyRequired
-import com.crocodic.core.extension.openActivity
-import com.crocodic.core.extension.textOf
+import com.crocodic.core.extension.*
 import com.crocodic.core.helper.DateTimeHelper
 import com.example.travelapp.R
 import com.example.travelapp.base.BaseActivity
@@ -24,29 +21,13 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layout.activity_login) {
-
-    lateinit var session : CoreSession
-
-    private lateinit var sharedPref : SharedPreference
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        sharedPref = SharedPreference(this)
-
-//        tokenAPI()
 
         binding.loginButton.setOnClickListener {
-
-            if (binding.etPhone.isEmptyRequired(R.string.fill_please) || binding.etPassword.isEmptyRequired(R.string.fill_please)){
-                return@setOnClickListener
-            }
-
             val phone = binding.etPhone.textOf()
             val password = binding.etPassword.textOf()
-
             viewModel.login(phone, password)
-
-            sharedPref.loginStatus(true)
         }
 
         lifecycleScope.launch {
@@ -54,25 +35,22 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
                 launch {
                     viewModel.apiResponse.collect {
                         when (it.status) {
-                            ApiStatus.LOADING -> loadingDialog.show("Logging in...")
+                            ApiStatus.LOADING -> loadingDialog.show("Stealing Your Information...")
                             ApiStatus.SUCCESS -> {
+                                tos(it.message ?: "we stole ur info, loser")
                                 loadingDialog.dismiss()
                                 openActivity<HomeActivity>()
                                 finish()
                             }
                             ApiStatus.ERROR -> {
-                                disconnect(it)
+                                loadingDialog.dismiss()
+                                tos(it.message ?: "login Failed")
                             }
-                            ApiStatus.EXPIRED -> {
-
-                            }
-                            else -> loadingDialog.setResponse(it.message ?: return@collect)
+                            else -> loadingDialog.setResponse("Else")
                         }
                     }
                 }
             }
         }
-
     }
-
 }

@@ -54,15 +54,16 @@
             app:layout_constraintStart_toStartOf="parent"/>
 
         <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/home_profile"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:src="@drawable/travellogo"
+            android:src="@drawable/baseline_person_24"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="28dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
-        <androidx.appcompat.widget.SearchView
+        <EditText
             android:id="@+id/search_view_home"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -70,16 +71,23 @@
             android:elevation="20dp"
             android:background="@drawable/edit_text_background"
             android:backgroundTint="@color/white"
+            android:paddingHorizontal="20dp"
             android:layout_marginTop="-30dp"
             android:layout_marginHorizontal="40dp"
             app:layout_constraintTop_toBottomOf="@id/blue_thing_home"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            android:inputType="text" />
 
         <com.denzcoskun.imageslider.ImageSlider
             android:id="@+id/home_image_slider"
             android:layout_width="match_parent"
             android:layout_height="160dp"
+            android:adjustViewBounds="true"
+            app:iss_auto_cycle="true"
+            app:iss_corner_radius="35"
+            app:iss_delay="0"
+            app:iss_period="4000"
             android:layout_marginTop="10dp"
             android:layout_marginHorizontal="30dp"
             app:layout_constraintTop_toBottomOf="@id/search_view_home"
@@ -105,6 +113,7 @@
                 android:gravity="center_horizontal">
 
                 <ImageButton
+                    android:id="@+id/button_nature"
                     android:layout_width="100dp"
                     android:layout_height="90dp"
                     android:src="@drawable/nature_button"
@@ -128,6 +137,7 @@
                 android:layout_marginHorizontal="16dp">
 
                 <ImageButton
+                    android:id="@+id/button_parks"
                     android:layout_width="100dp"
                     android:layout_height="90dp"
                     android:src="@drawable/parks_button"
@@ -150,6 +160,7 @@
                 android:gravity="center_horizontal">
 
                 <ImageButton
+                    android:id="@+id/button_all"
                     android:layout_width="100dp"
                     android:layout_height="90dp"
                     android:src="@drawable/all_button"
@@ -180,7 +191,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="@string/recommendations"
+                android:text="Places You'll Like"
                 android:textSize="20sp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/sora_bold"
@@ -189,6 +200,7 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
+                android:id="@+id/text_view_all"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -203,6 +215,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_home"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"

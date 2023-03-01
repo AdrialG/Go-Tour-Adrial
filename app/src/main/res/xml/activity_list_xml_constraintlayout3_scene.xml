@@ -7,7 +7,7 @@
         motion:constraintSetEnd="@+id/end"
         motion:constraintSetStart="@id/start"
         motion:duration="1000"
-        motion:motionInterpolator="easeInOut">
+        motion:motionInterpolator="cubic(0.58,0,0.2,1)">
        <KeyFrameSet>
        </KeyFrameSet>
         <OnSwipe motion:maxVelocity="0.95"

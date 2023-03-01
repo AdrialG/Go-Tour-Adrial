@@ -24,5 +24,4 @@ data class User(
     @SerializedName("updated_at")
     val updatedAt: String?
 
-
 )

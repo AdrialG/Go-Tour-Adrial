@@ -10,4 +10,14 @@
     <string name="recommendations">Recommendations</string>
     <string name="view_all">View All</string>
     <string name="see_details">See Details</string>
+    <string name="profile">Profile</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="name">Name</string>
+    <string name="logout">Logout</string>
+    <string name="edit_profi">Edit Profile</string>
+    <string name="add_a_profile_picture_to_make_your_account_more_personal">Add a profile picture to make your account more personal.</string>
+    <string name="username">Username</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="save">Save</string>
+    <string name="see_route">See Route</string>
 </resources>

@@ -36,6 +36,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/edit_text_background"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="2dp"
                 android:fontFamily="@font/sora_regular"
@@ -46,6 +47,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:background="@android:color/transparent"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:singleLine="true"
                     android:maxLines="1"/>
 
@@ -64,6 +66,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/edit_text_background"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="2dp"
                 android:fontFamily="@font/sora_regular"
@@ -74,7 +77,8 @@
                     android:id="@+id/et_password"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:background="#00000000"
+                    android:background="@android:color/transparent"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:singleLine="true"
                     android:inputType="textPassword" />
 

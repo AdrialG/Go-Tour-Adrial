@@ -8,6 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="logo_blue">#1CA0E1</color>
+    <color name="logo_blue_light">#3CB2EA</color>
     <color name="light_grey">#EEEEEE</color>
     <color name="button_nature">#FFCBA4</color>
     <color name="button_parks">#FFC4D4</color>

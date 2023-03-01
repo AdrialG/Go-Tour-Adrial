@@ -1,9 +1,7 @@
 package com.example.travelapp.api
 
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.POST
+import okhttp3.MultipartBody
+import retrofit2.http.*
 
 interface ApiService {
 
@@ -36,15 +34,38 @@ interface ApiService {
     @POST("api/auth-logout")
     suspend fun logout() : String
 
-    @FormUrlEncoded
-    @POST("api/category-detail/1")
-    suspend fun tourCategoryNature() : String
+    @POST("api/category-detail/{id_tour}")
+    suspend fun tourCategory(
+        @Path("id_tour") id_tour : Int
+    ) : String
+
+
+//    @FormUrlEncoded
+//    @POST("api/category-detail/1")
+//    suspend fun tourCategoryNature() : String
+//
+//    @FormUrlEncoded
+//    @POST("api/category-detail/2")
+//    suspend fun tourCategoryPark() : String
+//
+//    @GET("api/category-detail/3")
+//    suspend fun tourCategoryAll() : String
 
     @FormUrlEncoded
-    @POST("api/category-detail/2")
-    suspend fun tourCategoryPark() : String
+    @POST("api/user-edit")
+    suspend fun userUpdate(
+        @Field("_method") method: String,
+        @Field("name") name : String,
+        @Field("phone_number") phone : String,
+    ) : String
 
-    @GET("api/category-detail/3")
-    suspend fun tourCategoryAll() : String
+    @Multipart
+    @POST("api/user-edit")
+    suspend fun userUpdateWithPhoto(
+        @Part("_method") method: String,
+        @Part("name") name : String,
+        @Part("phone_number") phone : String,
+        @Part photo : MultipartBody.Part?
+    ) : String
 
 }

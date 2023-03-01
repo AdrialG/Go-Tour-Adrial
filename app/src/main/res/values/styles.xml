@@ -10,4 +10,7 @@
         <item name="iconTint">@color/black</item>
     </style>
 
+    <style name="EditTextBackground">
+    </style>
+
 </resources>
