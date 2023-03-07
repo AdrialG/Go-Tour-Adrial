@@ -9,6 +9,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.bumptech.glide.Glide
 import com.crocodic.core.base.adapter.CoreListAdapter
 import com.crocodic.core.extension.openActivity
+import com.crocodic.core.extension.tos
 import com.denzcoskun.imageslider.ImageSlider
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
@@ -51,9 +52,9 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>(R.layout.a
         val imageList = ArrayList<SlideModel>()
         val user = session.getUser()
 
+        getImage()
         observe()
         getTourList()
-        getImage()
 
         //SearchView Function
         binding.searchViewHome.doOnTextChanged { text, start, before, count ->

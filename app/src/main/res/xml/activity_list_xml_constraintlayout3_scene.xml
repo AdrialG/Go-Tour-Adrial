@@ -7,15 +7,13 @@
         motion:constraintSetEnd="@+id/end"
         motion:constraintSetStart="@id/start"
         motion:duration="1000"
-        motion:motionInterpolator="cubic(0.58,0,0.2,1)">
+        motion:motionInterpolator="cubic(0.85,0,0.2,1)">
        <KeyFrameSet>
        </KeyFrameSet>
-        <OnSwipe motion:maxVelocity="0.95"
-            motion:maxAcceleration="0.1"
-            motion:springDamping="6.857"
-            motion:springMass="0.9"
-            motion:springStiffness="40.0" />
-        <OnClick />
+        <OnSwipe motion:springDamping="1.143"
+            motion:springStiffness="40.0"
+            motion:springStopThreshold="0.9"
+            motion:springMass="1.1" />
     </Transition>
 
     <ConstraintSet android:id="@+id/start">
@@ -36,15 +34,6 @@
             motion:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="26dp"
             android:id="@+id/textView4" />
-        <Constraint
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="20dp"
-            motion:layout_constraintTop_toTopOf="parent"
-            motion:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="20dp"
-            android:id="@+id/imageButton2"
-            android:visibility="invisible" />
         <Constraint
             android:layout_width="35dp"
             android:layout_height="35dp"
@@ -74,20 +63,20 @@
             android:layout_marginTop="0dp"
             android:id="@+id/textView4" />
         <Constraint
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="20dp"
-            motion:layout_constraintTop_toTopOf="parent"
-            motion:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="60dp"
-            android:id="@+id/imageButton2" />
-        <Constraint
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_marginStart="34dp"
             motion:layout_constraintTop_toTopOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="68dp"
+            android:layout_marginTop="2dp"
             android:id="@+id/imageView3" />
+        <Constraint
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            motion:layout_constraintTop_toBottomOf="@+id/top_border"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="40dp"
+            android:id="@+id/recyclerView2" />
     </ConstraintSet>
 </MotionScene>

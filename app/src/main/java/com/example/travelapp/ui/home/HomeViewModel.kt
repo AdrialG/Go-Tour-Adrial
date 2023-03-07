@@ -1,9 +1,11 @@
 package com.example.travelapp.ui.home
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.crocodic.core.api.ApiCode
 import com.crocodic.core.api.ApiObserver
+import com.crocodic.core.api.ApiResponse
 import com.crocodic.core.extension.toList
 import com.example.travelapp.api.ApiService
 import com.example.travelapp.base.BaseViewModel
@@ -29,9 +31,7 @@ class HomeViewModel
             override suspend fun onSuccess(response: JSONObject) {
                 val status = response.getInt(ApiCode.STATUS)
                 if (status == ApiCode.SUCCESS){
-
                     val data = response.getJSONArray(ApiCode.DATA).toList<Tour>(gson)
-
                     tour.postValue(data)
 
                 } else {
@@ -43,19 +43,37 @@ class HomeViewModel
 
     //Image Slider
     fun imageSlider() = viewModelScope.launch {
+
+        Log.d("imageSlider", "tes 1 ")
+
         ApiObserver({ apiService.imageSlider()},false, object : ApiObserver.ResponseListener{
             override suspend fun onSuccess(response: JSONObject) {
                 val status = response.getInt(ApiCode.STATUS)
                 if (status == ApiCode.SUCCESS){
 
+                    Log.d("imageSlider", "tes 2 ")
+
                     val dataImage = response.getJSONArray(ApiCode.DATA).toList<ImageSlide>(gson)
 
                     image.postValue(dataImage)
 
+                    Log.d("imageSlider", "tes 3 ")
+
                 } else {
+
+                    Log.d("imageSlider", "tes 4 ")
+
                     val message = response.getString(ApiCode.MESSAGE)
                 }
             }
+
+            override suspend fun onError(response: ApiResponse) {
+                super.onError(response)
+
+                Log.d("imageSlider", "tes 5 ")
+
+            }
+
         })
     }
 

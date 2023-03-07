@@ -9,6 +9,8 @@
             name="data"
             type="com.example.travelapp.data.Tour" />
 
+        <import type="android.view.View" />
+
     </data>
 
     <androidx.constraintlayout.motion.widget.MotionLayout
@@ -64,18 +66,31 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/detail_favourite"
+            android:id="@+id/detail_favourite_blank"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_margin="12dp"
+            android:src="@drawable/baseline_favorite_border_24"
+            app:tint="@color/black"
+            android:visibility='@{data.like ? View.GONE : View.VISIBLE}'
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/detail_favourite_liked"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_margin="12dp"
             android:src="@drawable/baseline_favorite_24"
+            app:tint="@color/text_red"
+            android:visibility='@{data.like ? View.VISIBLE : View.GONE}'
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
             android:layout_width="match_parent"
-            android:layout_height="780dp"
+            android:layout_height="840dp"
             android:layout_marginBottom="-300dp"
             android:elevation="40dp"
             app:cardCornerRadius="50dp"
@@ -141,7 +156,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="30dp"
-                    android:layout_marginTop="80dp"
+                    android:layout_marginTop="100dp"
                     android:fontFamily="@font/sora_bold"
                     android:text="Information"
                     android:textColor="@color/black"
@@ -195,7 +210,8 @@
                     android:layout_height="420dp"
                     android:elevation="20dp"
                     app:cardCornerRadius="50dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintTop_toBottomOf="@id/location_title"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent">
 

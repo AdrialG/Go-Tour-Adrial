@@ -5,8 +5,11 @@ import android.util.Log
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.crocodic.core.api.ApiCode
+import com.crocodic.core.api.ApiObserver
 import com.crocodic.core.base.adapter.CoreListAdapter
 import com.crocodic.core.extension.openActivity
+import com.crocodic.core.extension.toList
 import com.example.travelapp.R
 import com.example.travelapp.base.BaseActivity
 import com.example.travelapp.data.Const
@@ -16,6 +19,7 @@ import com.example.travelapp.databinding.ListLayoutBinding
 import com.example.travelapp.ui.detail.DetailListActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import org.json.JSONObject
 
 @AndroidEntryPoint
 class ListActivity : BaseActivity<ActivityListBinding, ListViewModel>(R.layout.activity_list) {
@@ -62,12 +66,12 @@ class ListActivity : BaseActivity<ActivityListBinding, ListViewModel>(R.layout.a
             }
 
             3 -> {
-                viewModel.tourList(3)
+                viewModel.tourListRec()
                 binding.textView4.text = "All"
             }
 
             4 -> {
-                viewModel.tourList(4)
+                viewModel.tourListRec()
                 binding.textView4.text = "All"
             }
         }
@@ -79,6 +83,24 @@ class ListActivity : BaseActivity<ActivityListBinding, ListViewModel>(R.layout.a
 
 //    private fun getTourListAll() {
 //        viewModel.tourListAll()
+//    }
+
+//    private fun getData() {
+//        val idCategory = intent.getIntExtra(Const.CATEGORY.ID, 0)
+////        viewModel.tourListPath(if ( idCategory > 3) null else idCategory)
+//        if (idCategory == 4) {
+//            tourRec()
+//        } else {
+//            viewModel.tourList(idCategory)
+//        }
+//
+//        binding.textView4.text = when (idCategory) {
+//            1 -> "Nature"
+//            2 -> "Park"
+//            3 -> "All"
+//            else -> "Recommendation"
+//
+//        }
 //    }
 
     private fun observe() {
@@ -95,6 +117,26 @@ class ListActivity : BaseActivity<ActivityListBinding, ListViewModel>(R.layout.a
                 }
             }
         }
+    }
+
+//    fun tourListPath( idTour : Int?) = viewModelScope.launch {
+//        ApiObserver({ apiService.tourCategory(idTour) },
+//            false, object : ApiObserver.ResponseListener {
+//                override suspend fun onSuccess(response: JSONObject) {
+//                    val status = response.getInt(ApiCode.STATUS)
+//                    if (status == ApiCode.SUCCESS) {
+//                        val data = response.getJSONArray(ApiCode.DATA).toList<Tour>(gson)
+//                        tour.postValue(data)
+//
+//                    } else {
+//                        val message = response.getString(ApiCode.MESSAGE)
+//                    }
+//                }
+//            })
+//    }
+
+    private fun tourRec() {
+        viewModel.tourListRec()
     }
 
 }

@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.PersistableBundle
 import com.bumptech.glide.Glide
+import com.crocodic.core.extension.tos
 import com.example.travelapp.R
 import com.example.travelapp.base.BaseActivity
 import com.example.travelapp.data.Const
@@ -27,7 +28,6 @@ class DetailListActivity : BaseActivity<ActivityDetailListBinding, DetailListVie
 
         maplocation()
 
-        //Reciving TourData
         tour = intent.getParcelableExtra(Const.TOUR.TOUR)
         binding.data = tour
 
@@ -35,6 +35,25 @@ class DetailListActivity : BaseActivity<ActivityDetailListBinding, DetailListVie
         binding.detailBack.setOnClickListener {
             onBackPressed()
         }
+
+        //Favourite Button
+        binding.detailFavouriteBlank.setOnClickListener {
+            tos("Liked")
+            val tourId = tour?.id
+            if (tourId != null) {
+                viewModel.favouriteTour(tourId)
+            }
+        }
+
+        // UnFavourite Button
+        binding.detailFavouriteLiked.setOnClickListener {
+            tos("Un-Liked")
+            val tourId = tour?.id
+            if (tourId != null) {
+                viewModel.favouriteTour(tourId)
+            }
+        }
+
         binding.locationRoute.setOnClickListener {
             sendLocationIntent()
         }
@@ -81,8 +100,6 @@ class DetailListActivity : BaseActivity<ActivityDetailListBinding, DetailListVie
                         .title("Go Tour Destination")
                 )
             }
-
-
 
         }
     }

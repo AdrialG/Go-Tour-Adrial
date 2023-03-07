@@ -84,20 +84,19 @@ class ListViewModel @Inject constructor(private val apiService: ApiService, priv
 //            })
 //    }
 //
-//    fun tourListRec() = viewModelScope.launch {
-//        ApiObserver({ apiService.tourList() },
-//            false, object : ApiObserver.ResponseListener {
-//                override suspend fun onSuccess(response: JSONObject) {
-//                    val status = response.getInt(ApiCode.STATUS)
-//                    if (status == ApiCode.SUCCESS) {
-//                        val data = response.getJSONArray(ApiCode.DATA).toList<Tour>(gson)
-//                        tour.postValue(data)
-//
-//                    } else {
-//                        val message = response.getString(ApiCode.MESSAGE)
-//                    }
-//                }
-//            })
-//    }
+    fun tourListRec() = viewModelScope.launch {
+        ApiObserver({ apiService.tourList() }, false, object : ApiObserver.ResponseListener {
+                override suspend fun onSuccess(response: JSONObject) {
+                    val status = response.getInt(ApiCode.STATUS)
+                    if (status == ApiCode.SUCCESS) {
+                        val data = response.getJSONArray(ApiCode.DATA).toList<Tour>(gson)
+                        tour.postValue(data)
+
+                    } else {
+                        val message = response.getString(ApiCode.MESSAGE)
+                    }
+                }
+            })
+    }
 
 }

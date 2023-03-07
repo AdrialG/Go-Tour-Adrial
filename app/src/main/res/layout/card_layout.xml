@@ -9,11 +9,13 @@
             name="data"
             type="com.example.travelapp.data.Tour" />
 
+        <import type="android.view.View" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="160dp"
-        android:layout_height="wrap_content"
+        android:layout_height="140dp"
         android:paddingVertical="4dp">
 
         <androidx.cardview.widget.CardView
@@ -39,6 +41,15 @@
                     imageUrl='@{data.image}'
                     android:scaleType="centerCrop"
                     android:contentDescription="@string/grid_image" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/baseline_favorite_24"
+                    app:tint="@color/text_red"
+                    android:layout_gravity="end|top"
+                    android:visibility='@{data.like ? View.VISIBLE : View.GONE}'
+                    android:layout_margin="10dp"/>
 
             </androidx.cardview.widget.CardView>
 

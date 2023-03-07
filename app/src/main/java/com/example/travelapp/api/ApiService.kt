@@ -12,7 +12,6 @@ interface ApiService {
         @Field("password") password: String
     ) : String
 
-    @FormUrlEncoded
     @GET("api/tour-img-slider?limit=5")
     suspend fun imageSlider(
     ) : String
@@ -34,9 +33,9 @@ interface ApiService {
     @POST("api/auth-logout")
     suspend fun logout() : String
 
-    @POST("api/category-detail/{id_tour}")
+    @GET("api/category-detail/{id_tour}")
     suspend fun tourCategory(
-        @Path("id_tour") id_tour : Int
+        @Path("id_tour") id_tour : Int?
     ) : String
 
 
@@ -66,6 +65,12 @@ interface ApiService {
         @Part("name") name : String,
         @Part("phone_number") phone : String,
         @Part photo : MultipartBody.Part?
+    ) : String
+
+    @FormUrlEncoded
+    @POST("api/add-favourite")
+    suspend fun postFavourite(
+        @Field("tour_id")tour_id : Int?
     ) : String
 
 }
